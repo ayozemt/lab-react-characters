@@ -17,9 +17,14 @@ const handleSubmit = async (e) => {
 }
 
 const handleChange = (e) => {
+    let updatedValue = e.target.value;
+    // e.target.value devuelve siempre un String
+    if (updatedValue === "true" || updatedValue === "false") {
+        updatedValue = JSON.parse(updatedValue);
+    }
     setData({
         ...data,
-        [e.target.name]: e.target.value
+        [e.target.name]: updatedValue
     });
     cleanInputs();
 }
